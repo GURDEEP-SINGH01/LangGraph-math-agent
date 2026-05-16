@@ -37,4 +37,16 @@ const divide = tool(
     }
 );
 
-export const tools = [add, multiply, divide];
+const substract = tool(
+    async ({ a, b }) => a - b,
+    {
+        name: "substract",
+        description: "Substract second number from first",
+        schema: z.object({
+            a: z.number().describe("First number"),
+            b: z.number().describe("Second number"),
+        }),
+    }
+);
+
+export const tools = [add, multiply, divide, substract];
