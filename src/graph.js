@@ -23,19 +23,19 @@ const llm = new ChatOllama({
 const llmWithTools = llm.bindTools(tools);
 
 const chatbotNode = async (state) => {
-    console.log("\n====== CHATBOT NODE ======");
+    // console.log("\n====== CHATBOT NODE ======");
 
-    console.log("CURRENT STATE:");
-    console.log(
-        JSON.stringify(state.messages, null, 2)
-    );
+    // console.log("CURRENT STATE:");
+    // console.log(
+    //     JSON.stringify(state.messages, null, 2)
+    // );
     const response = await llmWithTools.invoke(
         state.messages
     );
-    console.log("\nLLM RESPONSE:");
-    console.log(
-        JSON.stringify(response, null, 2)
-    );
+    // console.log("\nLLM RESPONSE:");
+    // console.log(
+    //     JSON.stringify(response, null, 2)
+    // );
     return {
         messages: [response],
     };
