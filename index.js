@@ -22,6 +22,9 @@ const main = async () => {
                 ],
             },
             {
+                configurable: {
+                    thread_id: "math-0",
+                },
                 version: "v2",
             }
         );

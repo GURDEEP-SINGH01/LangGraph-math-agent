@@ -2,6 +2,7 @@ import {
     StateGraph,
     START,
     END,
+    MemorySaver,
 } from "@langchain/langgraph";
 
 import { ChatOllama } from "@langchain/ollama";
@@ -40,7 +41,7 @@ const chatbotNode = async (state) => {
         messages: [response],
     };
 };
-
+const memory = new MemorySaver();
 const graphBuilder = new StateGraph(GraphState);
 
 graphBuilder.addNode("chatbot", chatbotNode);
@@ -59,4 +60,6 @@ graphBuilder.addEdge("tools", "chatbot");
 graphBuilder.addEdge("chatbot", END);
 
 
-export const graph = graphBuilder.compile();
+export const graph = graphBuilder.compile({
+    checkpointer: memory,
+});
